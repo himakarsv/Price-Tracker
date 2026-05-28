@@ -1,0 +1,111 @@
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 24px;
+
+  .brand-icon {
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    color: #6366f1;
+  }
+
+  h1 {
+    margin: 8px 0 4px;
+    font-size: 24px;
+    color: #1a1a2e;
+  }
+
+  .subtitle {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.submit-btn {
+  height: 44px;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.strength {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #9ca3af;
+
+    mat-icon {
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+    }
+
+    &.ok {
+      color: #22c55e;
+    }
+  }
+}
+
+.error-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+
+  mat-icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.footer-link {
+  text-align: center;
+  margin: 20px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+
+  a {
+    color: #6366f1;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover { text-decoration: underline; }
+  }
+}

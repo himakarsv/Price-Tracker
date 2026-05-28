@@ -1,0 +1,57 @@
+.navbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .brand-name {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .user-name {
+    display: none;
+  }
+}

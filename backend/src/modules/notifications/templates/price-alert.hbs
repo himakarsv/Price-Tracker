@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price Alert</title>
+  </head>
+  <body style="margin: 0; padding: 0; background-color: #f3f4f6; font-family: Arial, Helvetica, sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f3f4f6; padding: 24px 0;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+            <tr>
+              <td style="background-color: #1a1a2e; padding: 32px 24px; text-align: center;">
+                <h1 style="margin: 0; color: #ffffff; font-size: 24px;">Price Tracker</h1>
+                <p style="margin: 8px 0 0; color: #c7c7d9; font-size: 14px;">Your price alert has triggered</p>
+              </td>
+            </tr>
+
+            {{#if productImage}}
+            <tr>
+              <td style="padding: 24px 24px 0; text-align: center;">
+                <img src="{{productImage}}" alt="{{productName}}" style="max-height: 200px; max-width: 100%; height: auto; display: inline-block;" />
+              </td>
+            </tr>
+            {{/if}}
+
+            <tr>
+              <td style="padding: 24px;">
+                <p style="margin: 0 0 16px; font-size: 18px; font-weight: bold; color: #1a1a2e; text-align: center;">{{productName}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; border-radius: 8px; padding: 20px;">
+                  <tr>
+                    <td style="text-align: center;">
+                      <p style="margin: 0 0 4px; font-size: 13px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">Current Price</p>
+                      <p style="margin: 0 0 16px; font-size: 32px; font-weight: bold; color: #22c55e;">{{currency}} {{currentPrice}}</p>
+                      <p style="margin: 0 0 4px; font-size: 13px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">Your Target Price</p>
+                      <p style="margin: 0; font-size: 18px; color: #9ca3af;">{{currency}} {{desiredPrice}}</p>
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top: 24px;">
+                  <tr>
+                    <td align="center">
+                      <a href="{{productUrl}}" style="display: inline-block; background-color: #1a1a2e; color: #ffffff; text-decoration: none; padding: 14px 36px; border-radius: 6px; font-size: 16px; font-weight: bold;">View Product</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding: 24px; border-top: 1px solid #e5e7eb;">
+                <p style="margin: 0; font-size: 12px; color: #9ca3af; text-align: center; line-height: 1.5;">You're receiving this because you set a price alert on Price Tracker. To stop alerts for this product, log in and disable tracking.</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

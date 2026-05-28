@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+
+<div class="dashboard">
+  <section class="stats">
+    <mat-card class="stat-card border-indigo">
+      <mat-icon>bookmarks</mat-icon>
+      <div class="stat-meta">
+        <span class="stat-value">{{ totalProducts }}</span>
+        <span class="stat-label">Total Tracked</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card border-pink">
+      <mat-icon>notifications_active</mat-icon>
+      <div class="stat-meta">
+        <span class="stat-value">{{ alertsTriggered }}</span>
+        <span class="stat-label">Alerts Sent</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card border-green">
+      <mat-icon>trending_down</mat-icon>
+      <div class="stat-meta">
+        <span class="stat-value">{{ priceDrops }}</span>
+        <span class="stat-label">Price Drops</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card border-purple">
+      <mat-icon>savings</mat-icon>
+      <div class="stat-meta">
+        <span class="stat-value">₹{{ averageSavings | number }}</span>
+        <span class="stat-label">Avg Savings</span>
+      </div>
+    </mat-card>
+  </section>
+
+  <section class="toolbar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search products...</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (keyup)="applyFilters()" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Platform</mat-label>
+      <mat-select [(ngModel)]="filterPlatform" (selectionChange)="applyFilters()">
+        <mat-option value="all">All Platforms</mat-option>
+        <mat-option value="amazon">Amazon</mat-option>
+        <mat-option value="flipkart">Flipkart</mat-option>
+        <mat-option value="myntra">Myntra</mat-option>
+        <mat-option value="meesho">Meesho</mat-option>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Sort by</mat-label>
+      <mat-select [(ngModel)]="sortBy" (selectionChange)="applyFilters()">
+        <mat-option value="newest">Newest First</mat-option>
+        <mat-option value="priceLowHigh">Price: Low to High</mat-option>
+        <mat-option value="biggestDrop">Biggest Drop</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" class="add-btn" (click)="openAddProductDialog()">
+      <mat-icon>add</mat-icon>
+      Add Product
+    </button>
+  </section>
+
+  @if (isLoading()) {
+    <section class="grid">
+      @for (s of [1, 2, 3]; track s) {
+        <div class="skeleton-card">
+          <div class="skeleton-img shimmer"></div>
+          <div class="skeleton-line shimmer"></div>
+          <div class="skeleton-line short shimmer"></div>
+        </div>
+      }
+    </section>
+  } @else if (filteredProducts.length === 0) {
+    <div class="empty-state">
+      <mat-icon>add_shopping_cart</mat-icon>
+      <p>No products tracked yet. Add your first product above.</p>
+    </div>
+  } @else {
+    <section class="grid">
+      @for (product of filteredProducts; track product._id) {
+        <app-product-card
+          [product]="product"
+          (deleted)="onProductDeleted($event)"
+          (updated)="onProductUpdated($event)"
+          (viewHistory)="openPriceHistory($event)"
+        ></app-product-card>
+      }
+    </section>
+  }
+</div>

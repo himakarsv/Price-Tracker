@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="brand">
+    <mat-icon>sell</mat-icon>
+    <span class="brand-name">Price Tracker</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  @if (user(); as currentUser) {
+    <div class="user-area">
+      @if (currentUser.avatar) {
+        <img [src]="currentUser.avatar" [alt]="currentUser.name" class="avatar" />
+      } @else {
+        <div class="avatar initials">{{ getInitials(currentUser.name) }}</div>
+      }
+      <span class="user-name">{{ currentUser.name }}</span>
+    </div>
+  }
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Account menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

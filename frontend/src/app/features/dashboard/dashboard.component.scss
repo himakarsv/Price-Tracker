@@ -1,0 +1,144 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border-left: 4px solid #6366f1;
+
+  mat-icon {
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    color: #6366f1;
+  }
+
+  .stat-meta {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: #6b7280;
+  }
+}
+
+.border-indigo { border-left-color: #6366f1; mat-icon { color: #6366f1; } }
+.border-pink { border-left-color: #ec4899; mat-icon { color: #ec4899; } }
+.border-green { border-left-color: #22c55e; mat-icon { color: #22c55e; } }
+.border-purple { border-left-color: #8b5cf6; mat-icon { color: #8b5cf6; } }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  .search-field {
+    flex: 1 1 240px;
+  }
+
+  mat-form-field {
+    margin-bottom: -1.25em;
+  }
+
+  .add-btn {
+    height: 48px;
+    margin-left: auto;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 64px 24px;
+  color: #9ca3af;
+
+  mat-icon {
+    font-size: 64px;
+    height: 64px;
+    width: 64px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+.skeleton-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.skeleton-img {
+  height: 160px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.skeleton-line {
+  height: 16px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+
+  &.short {
+    width: 60%;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar .add-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+}

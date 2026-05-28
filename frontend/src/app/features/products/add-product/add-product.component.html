@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Track a new product</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Product URL</mat-label>
+      <input
+        matInput
+        type="url"
+        formControlName="url"
+        placeholder="Paste Amazon/Flipkart/Myntra product URL"
+      />
+      <mat-icon matSuffix>link</mat-icon>
+      @if (form.controls.url.hasError('required') && form.controls.url.touched) {
+        <mat-error>URL is required</mat-error>
+      }
+      @if (form.controls.url.hasError('pattern')) {
+        <mat-error>URL must start with https://</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Desired Price</mat-label>
+      <span matTextPrefix>₹&nbsp;</span>
+      <input
+        matInput
+        type="number"
+        formControlName="desiredPrice"
+        placeholder="Alert me when price drops to..."
+      />
+      @if (form.controls.desiredPrice.hasError('required') && form.controls.desiredPrice.touched) {
+        <mat-error>Desired price is required</mat-error>
+      }
+      @if (form.controls.desiredPrice.hasError('min')) {
+        <mat-error>Price must be at least ₹1</mat-error>
+      }
+    </mat-form-field>
+
+    @if (errorMessage()) {
+      <div class="error-alert">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ errorMessage() }}</span>
+      </div>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="isLoading()">
+      @if (isLoading()) {
+        <mat-spinner diameter="20"></mat-spinner>
+      } @else {
+        Start Tracking
+      }
+    </button>
+  </mat-dialog-actions>
+</form>

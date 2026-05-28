@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Price History - {{ data.productName }}</h2>
+
+<mat-dialog-content>
+  @if (isLoading()) {
+    <div class="state-box">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  } @else if (hasData()) {
+    <div class="chart-box">
+      <canvas
+        baseChart
+        type="line"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+      ></canvas>
+    </div>
+  } @else {
+    <div class="state-box empty">
+      <span>No price history yet</span>
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

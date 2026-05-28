@@ -1,0 +1,32 @@
+.full-width {
+  width: 100%;
+}
+
+mat-dialog-content {
+  min-width: 360px;
+  padding-top: 8px;
+}
+
+.error-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+
+  mat-icon {
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  mat-dialog-content {
+    min-width: auto;
+  }
+}

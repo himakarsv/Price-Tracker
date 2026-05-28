@@ -1,0 +1,63 @@
+<mat-card class="product-card" [class.paused]="!product.isActive">
+  <div class="card-top">
+    <span class="platform-badge">
+      {{ getPlatformIcon() }} {{ product.platform }}
+    </span>
+    @if (product.isAlertSent) {
+      <mat-icon class="alert-bell" matTooltip="Price alert sent">notifications_active</mat-icon>
+    }
+  </div>
+
+  <div class="image-box">
+    @if (product.productImage && !imageError) {
+      <img
+        [src]="product.productImage"
+        [alt]="product.productName"
+        (error)="imageError = true"
+      />
+    } @else {
+      <mat-icon class="placeholder-icon">image_not_supported</mat-icon>
+    }
+    @if (!product.isActive) {
+      <div class="paused-overlay">Paused</div>
+    }
+  </div>
+
+  <h3 class="product-name" [title]="product.productName">{{ product.productName }}</h3>
+
+  <div class="price-section">
+    <div class="current-price" [class.at-target]="isPriceAtTarget()">
+      {{ product.currency }} {{ product.currentPrice | number }}
+    </div>
+    <div class="target-price">Target: ₹{{ product.desiredPrice | number }}</div>
+    @if (getPriceDropPercent() > 0) {
+      <span class="drop-badge">{{ getPriceDropPercent() }}% off</span>
+    }
+  </div>
+
+  <div class="updated-at">Updated {{ product.lastCheckedAt | timeAgo }}</div>
+
+  <div class="actions">
+    <button mat-icon-button matTooltip="Refresh price" (click)="triggerRefresh()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Price history" (click)="viewHistory.emit(product)">
+      <mat-icon>show_chart</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Edit target price" (click)="openEditDialog()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" matTooltip="Remove tracking" (click)="confirmDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <a
+      mat-icon-button
+      matTooltip="View on site"
+      [href]="product.url"
+      target="_blank"
+      rel="noopener"
+    >
+      <mat-icon>open_in_new</mat-icon>
+    </a>
+  </div>
+</mat-card>
